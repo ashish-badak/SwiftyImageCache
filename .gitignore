@@ -1,18 +1,13 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
-## User settings
+# ==============================================================================
+# 1. XCODE USER DATA & PRIVATE SCHEMES (Identity & Workspace Hygiene)
+# ==============================================================================
 xcuserdata/
-
-## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+*.xcuserdatad/
+*.xcuserstate
+*.xcbkptlist
+UserInterfaceState.xcuserstate
 *.xcscmblueprint
 *.xccheckout
-
-## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
-build/
-DerivedData/
-*.moved-aside
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -21,70 +16,178 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+*.xcshareddata/**/*.xcbkptlist
+*.xcshareddata/**/IDETemplateMacros.plist
 
-## Obj-C/Swift specific
+# ==============================================================================
+# 2. BUILD PRODUCTS, DERIVED DATA, METRICS & CRASH LOGS
+# ==============================================================================
+build/
+DerivedData/
+*.moved-aside
 *.hmap
-
-## App packaging
 *.ipa
-*.dSYM.zip
-*.dSYM
-
-## Playgrounds
+*.dSYM*
+*.xcresult
+*.crash
+*.ips
 timeline.xctimeline
 playground.xcworkspace
+.xcodecloud/local/
+.xcodecloud/secrets.env
 
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-# Package.resolved
-# *.xcodeproj
-#
-# Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
-# hence it is not needed unless you have added a package configuration file to your project
-# .swiftpm
+# ==============================================================================
+# 3. APPLE INTELLIGENCE, XCODE PREDICTIVE ENGINE & LOCAL COREML
+# ==============================================================================
+.sourcekit-lsp/
+.swift-sourcekit-lsp/
+.xcode/prediction/
+.xcode/ai_cache/
+*.sourcekit
+*.xcmigration
+*.xcplayback
+*.mlmodelc
+*.coreml_cache/
+.coreml/
 
+# ==============================================================================
+# 4. LOCAL PERSISTENCE & DATABASES (SwiftData, Core Data, Realm, SQLite)
+# ==============================================================================
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.db
+*.db-wal
+*.db-shm
+*.realm
+*.realm.lock
+*.realm.management/
+*.realm.note
+*.schema-cache
+
+# ==============================================================================
+# 5. DEPENDENCY MANAGERS (SPM, CocoaPods, Carthage, Accio)
+# ==============================================================================
 .build/
-
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
-
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.swiftpm/configuration/
 Carthage/Build/
-
-# Accio dependency management
+Carthage/Checkouts/
 Dependencies/
 .accio/
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo.
-# Instead, use fastlane to re-generate the screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
-
+# ==============================================================================
+# 6. FASTLANE & INJECTION TOOLING
+# ==============================================================================
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
-fastlane/test_output
-
-# Code Injection
-#
-# After new code Injection tools there's a generated folder /iOSInjectionProject
-# https://github.com/johnno1962/injectionforxcode
-
+fastlane/test_output/
+fastlane/README.md.bak
+.fastlane_temp/
 iOSInjectionProject/
+.injection/
+
+# ==============================================================================
+# 7. AI AGENTS, LOCAL ASSISTANTS & AI IDES
+# ==============================================================================
+.cursor/
+.cursorrules.local
+.cursorignore.local
+.cursorindexing/
+.cursor-tasks/
+.cursorcache/
+.windsurf/
+.claude/
+*.claude
+.claude.json
+claude.json
+.claude_history
+.claude_settings.json
+.claude-session/
+.opencode/
+*.opencode
+opencode.json
+.codex/
+.codex_history
+.codex-cache/
+.antigravity/
+*.antigravity
+.googleai/
+.gemini/
+gemini_session.json
+antigravity_history.log
+.copilot/
+.copilot-chat/
+copilot_history.json
+.aider*
+.continue/
+.gpteng/
+.auto-gpt/
+.agent/
+.agent_history/
+.groq/
+.groq_cache/
+.prompts/cache/
+*.prompt.draft
+*.llm.log
+*.prompt.json
+llm_eval_cache/
+ai_transcripts/
+
+# ==============================================================================
+# 8. SECRETS, TOKENS, CERTIFICATES & PROVISIONING
+# ==============================================================================
+*.env*
+!.env.example
+*.token
+*.credentials
+credentials.json
+secrets.json
+service_account.json
+*_token.txt
+*.key
+*.pem
+*.p8
+*.p12
+*.pfx
+*.keystore
+*.jks
+*.keychain
+*.cer
+*.crt
+*.mobileprovision
+betterleaks-report.*
+gitleaks-report.*
+trufflehog-report.*
+
+# ==============================================================================
+# 9. MACOS ARTIFACTS & SYSTEM METADATA
+# ==============================================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# ==============================================================================
+# 10. GENERAL EDITORS & TERMINAL DUMPS
+# ==============================================================================
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.swp
+*~
+*.bak
+*.orig
+.zsh_history
+.bash_history
+*.session.log
+term_output.txt
